@@ -1,4 +1,3 @@
-from datetime import datetime
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -6,10 +5,10 @@ db = SQLAlchemy()
 
 class Show(db.Model):
     __tablename__ = 'show'
-
-    artist_id = db.Column(db.Integer, db.ForeignKey('artist.id'), primary_key=True)
-    venue_id = db.Column(db.Integer, db.ForeignKey('venue.id'), primary_key=True)
-    start_time = db.Column(db.DateTime)
+    id = db.Column(db.Integer, primary_key=True)
+    artist_id = db.Column(db.Integer, db.ForeignKey('artist.id'), nullable=False)
+    venue_id = db.Column(db.Integer, db.ForeignKey('venue.id'), nullable=False)
+    start_time = db.Column(db.DateTime, nullable=False)
 
     def as_dict(self):
         return {
@@ -27,12 +26,13 @@ class Artist(db.Model):
     state = db.Column(db.String(120))
     phone = db.Column(db.String(120))
     genres = db.Column(db.String(120))
+    #genres = db.Column(db.ARRAY(db.String), nullable=False)
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
     website = db.Column(db.String(120))
-    seeking_venue = db.Column(db.Boolean)
+    seeking_venue = db.Column(db.String())
     seeking_description = db.Column(db.String(500))
-    shows = db.relationship('Show', backref='Artist')
+    shows = db.relationship('Show', backref='Artist', lazy=True)
 
     def as_dict(self):
         return {
@@ -62,10 +62,11 @@ class Venue(db.Model):
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
     genres = db.Column(db.String(120))
+    #genres = db.Column(db.ARRAY(db.String), nullable=False)
     website = db.Column(db.String(120))
-    seeking_talent = db.Column(db.Boolean)
+    seeking_talent = db.Column(db.String())
     seeking_description = db.Column(db.String(500))
-    shows = db.relationship('Show', backref='Venue')
+    shows = db.relationship('Show', backref='Venue', lazy=True)
 
     def as_dict(self):
         return {

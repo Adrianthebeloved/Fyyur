@@ -13,7 +13,7 @@ This app is nearly complete. It is only missing one thing… real data! While th
 
 * creating new venues, artists, and creating new shows.
 * searching for venues and artists.
-* learning more about a specific artist or venue.
+* learning more about a specific artist or venue..
 
 We want Fyyur to be the next new platform that artists and musical venues can use to find each other, and discover new music shows. Let's make that happen!
 

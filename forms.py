@@ -1,7 +1,30 @@
 from datetime import datetime
 from flask_wtf import Form
+#from enum import Enum
 from wtforms import StringField, SelectField, SelectMultipleField, DateTimeField, BooleanField
-from wtforms.validators import DataRequired, AnyOf, URL
+from wtforms.validators import DataRequired, AnyOf, URL, Length, Regexp
+
+# class Genres(Enum):
+#     ALTERNATIVE = 1
+#     BLUES = 1
+#     CLASSICAL = 1
+#     COUNTRY = 1
+#     ELECTRONIC = 1
+#     FOLK = 1
+#     FUNK = 1
+#     HIPHOP = 1
+#     HEAVY_METAL = 1
+#     INSTRUMENTAL = 1
+#     JAZZ = 1
+#     MUSICAL_THEATRE = 1
+#     POP = 1
+#     PUNK = 1
+#     RNB = 1
+#     REGGAE = 1
+#     ROCKNROLL = 1
+#     SOUL = 1
+#     OTHER = 1
+
 
 class ShowForm(Form):
     artist_id = StringField(
@@ -92,6 +115,25 @@ class VenueForm(Form):
         # TODO implement enum restriction
         'genres', validators=[DataRequired()],
         choices=[
+            # (Genres.ALTERNATIVE, 'Alternative'),
+            # (Genres.BLUES, 'Blues'),
+            # (Genres.CLASSICAL, 'Classical'),
+            # (Genres.COUNTRY, 'Country'),
+            # (Genres.ELECTRONIC, 'Electronic'),
+            # (Genres.FOLK, 'Folk'),
+            # (Genres.FUNK, 'Funk'),
+            # (Genres.HIPHOP, 'Hip-Hop'),
+            # (Genres.HEAVY_METAL, 'Heavy Metal'),
+            # (Genres.INSTRUMENTAL, 'Instrumental'),
+            # (Genres.JAZZ, 'Jazz'),
+            # (Genres.MUSICAL_THEATRE, 'Musical Theatre'),
+            # (Genres.POP, 'Pop'),
+            # (Genres.PUNK, 'Punk'),
+            # (Genres.RNB, 'R&B'),
+            # (Genres.REGGAE, 'Reggae'),
+            # (Genres.ROCKNROLL, 'Rock n Roll'),
+            # (Genres.SOUL, 'Soul'),
+            # (Genres.OTHER, 'Other'),
             ('Alternative', 'Alternative'),
             ('Blues', 'Blues'),
             ('Classical', 'Classical'),
@@ -193,7 +235,9 @@ class ArtistForm(Form):
     )
     phone = StringField(
         # TODO implement validation logic for state
-        'phone'
+        'phone',
+        #validators=[DataRequired(), Length(min=10, max=10), Regexp(regex='^[+-]?[0-9]$')]
+        
     )
     image_link = StringField(
         'image_link'
@@ -201,6 +245,25 @@ class ArtistForm(Form):
     genres = SelectMultipleField(
         'genres', validators=[DataRequired()],
         choices=[
+            # (Genres.ALTERNATIVE, 'Alternative'),
+            # (Genres.BLUES, 'Blues'),
+            # (Genres.CLASSICAL, 'Classical'),
+            # (Genres.COUNTRY, 'Country'),
+            # (Genres.ELECTRONIC, 'Electronic'),
+            # (Genres.FOLK, 'Folk'),
+            # (Genres.FUNK, 'Funk'),
+            # (Genres.HIPHOP, 'Hip-Hop'),
+            # (Genres.HEAVY_METAL, 'Heavy Metal'),
+            # (Genres.INSTRUMENTAL, 'Instrumental'),
+            # (Genres.JAZZ, 'Jazz'),
+            # (Genres.MUSICAL_THEATRE, 'Musical Theatre'),
+            # (Genres.POP, 'Pop'),
+            # (Genres.PUNK, 'Punk'),
+            # (Genres.RNB, 'R&B'),
+            # (Genres.REGGAE, 'Reggae'),
+            # (Genres.ROCKNROLL, 'Rock n Roll'),
+            # (Genres.SOUL, 'Soul'),
+            # (Genres.OTHER, 'Other'),
             ('Alternative', 'Alternative'),
             ('Blues', 'Blues'),
             ('Classical', 'Classical'),
